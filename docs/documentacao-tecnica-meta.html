@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Documentação técnica — Sistema META</title>
+  <style>
+    :root{--navy:#10233f;--blue:#2867b2;--orange:#f47a2a;--teal:#139a80;--red:#c84545;--ink:#25344e;--muted:#637089;--paper:#fff;--wash:#f4f7fb;--line:#dce3ed}
+    @page{size:A4;margin:16mm 15mm 18mm}*{box-sizing:border-box}html{font-size:10.4pt}body{margin:0;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.48;background:#fff}
+    h1,h2,h3,h4{color:var(--navy);line-height:1.15;break-after:avoid}h1{font-size:28pt;margin:0 0 16px}h2{font-size:20pt;margin:0 0 14px;padding-bottom:7px;border-bottom:2px solid var(--orange)}h3{font-size:14pt;margin:20px 0 8px}h4{font-size:11pt;margin:14px 0 5px}p{margin:0 0 10px}a{color:var(--blue);text-decoration:none}ul,ol{margin:7px 0 12px;padding-left:22px}li{margin:3px 0}code{font-family:"SFMono-Regular",Consolas,monospace;background:#edf1f6;border-radius:4px;padding:1px 4px;font-size:9pt}pre{background:#101b2c;color:#edf5ff;padding:12px 14px;border-radius:8px;overflow-wrap:anywhere;white-space:pre-wrap;break-inside:avoid;font-size:8.4pt}
+    .cover{height:260mm;position:relative;padding:32mm 18mm;background:linear-gradient(145deg,#0d213c 0%,#163960 56%,#f47a2a 170%);color:#fff;page-break-after:always;overflow:hidden}.cover:before{content:"";position:absolute;width:420px;height:420px;border:70px solid rgba(255,255,255,.06);border-radius:50%;right:-150px;top:-100px}.cover:after{content:"";position:absolute;width:330px;height:330px;background:var(--orange);opacity:.12;transform:rotate(35deg);left:-220px;bottom:-190px}.cover .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#ffb47a}.cover h1{font-size:42pt;color:#fff;max-width:600px;margin-top:25mm}.cover h1 span{color:#ff994e}.cover .lead{font-size:17pt;max-width:560px;color:#dfe9f5}.cover .meta{position:absolute;left:18mm;right:18mm;bottom:28mm;border-top:1px solid rgba(255,255,255,.3);padding-top:12px;display:flex;justify-content:space-between;color:#c7d6e7}.cover .mark{font-size:17pt;font-weight:800;letter-spacing:.08em}.cover .pill{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:7px 12px;border-radius:999px}
+    .page{page-break-before:always}.page.first{page-break-before:auto}.section{margin-bottom:24px}.lede{font-size:12pt;color:#43536d}.kicker{color:var(--orange);font-size:9pt;letter-spacing:.14em;text-transform:uppercase;font-weight:800;margin-bottom:7px}.toc{columns:2;column-gap:32px}.toc a{display:block;border-bottom:1px dotted #aeb8c6;padding:7px 0;color:var(--ink)}.toc .n{float:right;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.card{border:1px solid var(--line);border-radius:10px;padding:13px;background:var(--paper);break-inside:avoid}.card h3,.card h4{margin-top:0}.metric{border-top:4px solid var(--blue)}.metric.orange{border-color:var(--orange)}.metric.teal{border-color:var(--teal)}.metric.red{border-color:var(--red)}.metric strong{font-size:23pt;color:var(--navy);display:block}.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#eaf2ff;color:#245c9e;font-size:8.5pt;font-weight:700}.tag.red{background:#ffeded;color:#a52d2d}.tag.orange{background:#fff0e4;color:#a84f12}.tag.green{background:#e4f7f1;color:#17755f}
+    .callout{border-left:5px solid var(--orange);background:#fff7ef;padding:12px 14px;margin:12px 0;border-radius:0 8px 8px 0;break-inside:avoid}.callout.danger{border-color:var(--red);background:#fff0f0}.callout.info{border-color:var(--blue);background:#eef5ff}.callout.good{border-color:var(--teal);background:#ebf9f5}.callout strong{color:var(--navy)}
+    table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:8.9pt;break-inside:auto}thead{display:table-header-group}tr{break-inside:avoid}th{background:var(--navy);color:#fff;text-align:left;padding:7px 8px}td{border-bottom:1px solid var(--line);padding:7px 8px;vertical-align:top}tbody tr:nth-child(even){background:#f7f9fc}.compact td,.compact th{padding:5px 7px}
+    figure{margin:12px 0 18px;break-inside:avoid}figure img{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:7px;background:white}figcaption{font-size:8.4pt;color:var(--muted);margin-top:5px}.fullbleed img{width:100%}.shots{display:grid;grid-template-columns:1fr 1fr;gap:10px}.shots figure{margin:0}.shots figcaption{min-height:28px}.diagram img{border:0}.small{font-size:8.7pt;color:var(--muted)}.muted{color:var(--muted)}.check{color:var(--teal);font-weight:700}.fail{color:var(--red);font-weight:700}.priority{font-weight:800}.p0{color:var(--red)}.p1{color:#b86519}.p2{color:var(--teal)}
+    .tree{font-family:Consolas,monospace;background:#f5f7fa;border:1px solid var(--line);padding:12px;border-radius:8px;font-size:8.4pt;white-space:pre;break-inside:avoid}.footer-note{border-top:1px solid var(--line);margin-top:25px;padding-top:8px;color:var(--muted);font-size:8pt}.avoid-break{break-inside:avoid}.break-before{page-break-before:always}.screen-note{font-size:8.4pt;background:#edf2f8;padding:7px 10px;border-radius:6px}.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.phase{padding:12px;border-radius:9px;background:#eef4ff;border-top:4px solid var(--blue);break-inside:avoid}.phase:nth-child(2){border-color:var(--teal);background:#edf9f5}.phase:nth-child(3){border-color:var(--orange);background:#fff5eb}.phase:nth-child(4){border-color:#7356b7;background:#f4f0ff}.phase b{display:block;color:var(--navy);margin-bottom:5px}.source-list{font-size:8.6pt}.source-list li{overflow-wrap:anywhere}
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <div class="mark">META</div><div class="eyebrow">Análise de software</div>
+    <h1>Documentação <span>técnica e funcional</span></h1>
+    <p class="lead">Estrutura, modelagem de dados, telas, fluxos, instalação, auditoria de riscos e caminhos de modernização.</p>
+    <p style="margin-top:20mm"><span class="pill">Laravel · Sistema de honras/moedas</span></p>
+    <div class="meta"><div><b>Snapshot:</b> commit 369302d<br><b>Branch:</b> master</div><div style="text-align:right"><b>Data da análise:</b> 21/10/2026<br><b>Escopo:</b> código e dump local</div></div>
+  </section>
+
+  <section class="first">
+    <div class="kicker">Leitura rápida</div><h2>Sumário executivo</h2>
+    <p class="lede">O META é um monólito Laravel que cadastra participantes, mostra o saldo de alunos e permite a voluntários/administradores adicionar ou utilizar “honras”. O núcleo é pequeno, mas a base combina estruturas de várias gerações do Laravel e não é reproduzível somente pelas migrations.</p>
+    <div class="grid3">
+      <div class="card metric"><strong>13</strong>rotas ativas</div><div class="card metric orange"><strong>53</strong>usuários no dump</div><div class="card metric teal"><strong>325</strong>lançamentos no dump</div>
+    </div>
+    <div class="callout danger"><strong>Risco crítico de autorização.</strong> O menu esconde funções por perfil, porém `/admin`, `/alunos` e `/points/*` exigem apenas autenticação. Um aluno autenticado pode chamar URLs administrativas diretamente.</div>
+    <div class="grid">
+      <div class="card"><h3>O que funciona</h3><ul><li>Artisan inicializa com o vendor presente.</li><li>A lista de 13 rotas é gerada.</li><li>Login, cadastro, saldo, listagens e movimentação estão implementados.</li><li>O esquema do dump é simples e migrável.</li></ul></div>
+      <div class="card"><h3>O que impede evolução segura</h3><ul><li>Laravel 8 fora de suporte.</li><li>Migrations incompletas.</li><li>Testes quebrados antes da execução.</li><li>Front-end duplicado/incompleto.</li><li>Segredos e dados pessoais mal protegidos.</li></ul></div>
+    </div>
+    <h3>Recomendação</h3><p>Conter imediatamente autorização, segredos, dump e consistência de saldo. Em seguida, migrar para uma base nova em Laravel 13 com PHP suportado, preservando o monólito e separando os módulos de autenticação, alunos, pontos e recompensas. Uma SPA ou reescrita em outra linguagem só se justifica por estratégia organizacional ou roadmap mobile.</p>
+    <div class="footer-note">Este documento não reproduz dados pessoais do dump. Todas as telas usam registros fictícios.</div>
+  </section>
+
+  <section class="page">
+    <div class="kicker">Navegação</div><h2>Conteúdo</h2>
+    <div class="toc">
+      <a href="#escopo">1. Escopo e método</a><a href="#produto">2. Produto e perfis</a><a href="#arquitetura">3. Arquitetura atual</a><a href="#estrutura">4. Estrutura do repositório</a><a href="#fluxos">5. Rotas e fluxos</a><a href="#telas">6. Telas atuais</a><a href="#dados">7. Modelagem de dados</a><a href="#instalacao">8. Instalação e ambiente</a><a href="#auditoria">9. Auditoria e erros</a><a href="#melhorias">10. Melhorias funcionais e visuais</a><a href="#migracao">11. Opções de migração</a><a href="#roadmap">12. Roadmap recomendado</a><a href="#validacao">13. Validações e limitações</a><a href="#referencias">14. Referências</a>
+    </div>
+
+    <div id="escopo" class="section" style="margin-top:25px"><h2>1. Escopo e método</h2>
+      <p>A análise cobre arquivos versionados, dependências instaladas, views, controllers, modelos, configurações, histórico Git e o dump `Meta20241130.sql`. O snapshot analisado está no commit <code>369302d</code>; o dump foi concluído em 30/11/2024.</p>
+      <p>Foram executados comandos de diagnóstico somente leitura sobre a aplicação e produzidos artefatos novos dentro de <code>docs/</code>. O banco remoto indicado no `.env` não foi acessado. O dump foi analisado apenas de forma agregada.</p>
+      <div class="callout info"><strong>Critério de evidência.</strong> “Atual” significa observado no fluxo realmente carregado por `RouteServiceProvider`; “legado/inativo” significa presente no repositório, mas sem ligação com as rotas efetivas; “proposta” é recomendação futura.</div>
+    </div>
+    <div id="produto" class="section"><h2>2. Produto e perfis</h2>
+      <p>O sistema apoia o Projeto META em uma economia interna de reconhecimento. Alunos acumulam honras/moedas por atividades e podem utilizá-las. O sistema registra um saldo no usuário e um histórico de lançamentos.</p>
+      <table><thead><tr><th>Perfil</th><th>Experiência pretendida</th><th>Estado no código</th></tr></thead><tbody>
+        <tr><td>Aluno</td><td>Registrar, autenticar e consultar o próprio saldo.</td><td>Implementado.</td></tr>
+        <tr><td>Voluntário</td><td>Listar alunos; adicionar/utilizar honras.</td><td>Visível no menu, sem autorização server-side.</td></tr>
+        <tr><td>Administrador</td><td>Funções do voluntário e lista de participantes.</td><td>Visível no menu, sem autorização server-side.</td></tr>
+        <tr><td>Cancelou</td><td>Conta inativa/cancelada.</td><td>Aparece no dump como `type`; não há regra específica.</td></tr>
+      </tbody></table>
+    </div>
+  </section>
+
+  <section id="arquitetura" class="page">
+    <div class="kicker">Estado observado</div><h2>3. Arquitetura atual</h2>
+    <figure class="diagram"><img src="assets/diagrams/arquitetura-atual.svg" alt="Diagrama da arquitetura atual"><figcaption>Figura 1 — Fluxo de execução real: navegador, rotas antigas, controllers, Blade/Eloquent e MySQL.</figcaption></figure>
+    <p>A aplicação é um monólito renderizado no servidor. O request entra em `public/index.php`, inicializa o framework, passa pelos middlewares globais e encontra rotas em <code>app/Http/routes.php</code>. Controllers Eloquent leem/escrevem MySQL e retornam Blade. Bootstrap 3 e jQuery são servidos diretamente de <code>public/</code>.</p>
+    <div class="callout"><strong>Ponto decisivo:</strong> `RouteServiceProvider::map()` inclui `app/Http/routes.php`. Assim, `routes/web.php`, `routes/auth.php`, controllers do Breeze, componentes Tailwind e várias views modernas não participam do sistema atual.</div>
+    <div class="grid">
+      <div class="card"><h3>Back-end efetivo</h3><ul><li>Laravel 8.83.27</li><li>`HomeController` e `AuthController` legado</li><li>`App\User` e `App\Points`</li><li>sessão e CSRF do Laravel</li><li>MySQL</li></ul></div>
+      <div class="card"><h3>Front-end efetivo</h3><ul><li>Blade clássico</li><li>Bootstrap 3</li><li>jQuery local</li><li>CSS `3-col-portfolio.css`</li><li>JavaScript inline para senha</li></ul></div>
+    </div>
+  </section>
+
+  <section id="estrutura" class="page">
+    <div class="kicker">Código e dependências</div><h2>4. Estrutura do repositório</h2>
+    <div class="tree">app/
+├── Http/Controllers/       HomeController + autenticação duplicada
+├── Http/routes.php         rotas efetivamente carregadas
+├── User.php                usuário/autenticação
+└── Points.php              histórico de honras
+database/
+├── migrations/             apenas users e password_resets
+└── seeds/                  seeder vazio
+resources/views/
+├── app.blade.php           layout Bootstrap ativo
+├── home.blade.php          saldo
+├── auth/                   telas antigas + telas Breeze
+└── admin/users/            listagens e formulários
+routes/                     web.php/auth.php presentes, mas inativos
+public/                     Bootstrap, jQuery, CSS e logo
+dump/                       snapshot SQL com dados pessoais
+tests/                      testes antigos e novos incompatíveis</div>
+    <h3>Sobreposição de gerações</h3>
+    <table class="compact"><thead><tr><th>Tema</th><th>Legado</th><th>Mais novo</th><th>Efeito</th></tr></thead><tbody>
+      <tr><td>Rotas</td><td>`app/Http/routes.php`</td><td>`routes/web.php`</td><td>Somente o legado é carregado.</td></tr>
+      <tr><td>Autenticação</td><td>Laravel UI/AuthController</td><td>Breeze controllers</td><td>Duplicidade e confusão de manutenção.</td></tr>
+      <tr><td>UI</td><td>Bootstrap 3/jQuery</td><td>Tailwind/Alpine</td><td>Duas bibliotecas, uma inativa.</td></tr>
+      <tr><td>Build</td><td>Gulp/Elixir</td><td>Vite</td><td>Ambos incompletos; não há script npm.</td></tr>
+      <tr><td>Testes</td><td>`TestCase` global/visit()</td><td>`Tests\*`/factories</td><td>PHPUnit encerra com erro fatal.</td></tr>
+    </tbody></table>
+    <p>Dependências diretas relevantes: Laravel UI 3.4.6, Breeze 1.10.0, Laravel Collective HTML 6.4.1, Guzzle 7.8.1 e PHPUnit 9.6.10. `composer.json` é válido, mas contém bibliotecas antigas de desenvolvimento e scripts herdados.</p>
+  </section>
+
+  <section id="fluxos" class="page">
+    <div class="kicker">Comportamento</div><h2>5. Rotas e fluxos funcionais</h2>
+    <figure class="diagram"><img src="assets/diagrams/fluxos-funcionais.svg" alt="Fluxos funcionais"><figcaption>Figura 2 — Perfis e fluxo de lançamento; a caixa vermelha destaca a ausência de autorização por papel.</figcaption></figure>
+    <table class="compact"><thead><tr><th>Método</th><th>URI</th><th>Ação</th><th>Middleware</th></tr></thead><tbody>
+      <tr><td>GET</td><td><code>/</code></td><td>saldo do usuário</td><td>auth</td></tr><tr><td>GET</td><td><code>/admin</code></td><td>participantes</td><td>auth</td></tr><tr><td>GET</td><td><code>/alunos</code></td><td>alunos</td><td>auth</td></tr><tr><td>GET/POST</td><td><code>/points/plus...</code></td><td>adicionar</td><td>auth</td></tr><tr><td>GET/POST</td><td><code>/points/minus...</code></td><td>utilizar</td><td>auth</td></tr><tr><td>GET/POST</td><td><code>/auth/login</code></td><td>login</td><td>guest</td></tr><tr><td>GET/POST</td><td><code>/auth/register</code></td><td>cadastro</td><td>guest</td></tr><tr><td>GET</td><td><code>/auth/logout</code></td><td>logout</td><td>—</td></tr><tr><td>GET</td><td><code>/clear-cache</code></td><td>cache operacional</td><td>pública</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="page">
+    <h2>5.1 Cadastro e autenticação</h2>
+    <ol><li>Visitante informa nome, e-mail, WhatsApp, nascimento e senha.</li><li>Controller verifica reCAPTCHA com `file_get_contents`.</li><li>Somente nome, e-mail e senha são validados.</li><li>Usuário é criado com `type = aluno`, autenticado e redirecionado.</li></ol>
+    <p>O login usa guard de sessão e regenera o identificador em caso de sucesso. Logout por GET permite acionamento sem intenção e deve virar POST com CSRF. Não há rate limit ligado às rotas antigas.</p>
+    <h2>5.2 Consulta e listagens</h2>
+    <p>A home exibe `Auth::user()->points`. `/admin` retorna perfis diferentes de aluno. `/alunos` retorna somente alunos e ordena pelo parâmetro `order`, sem lista permitida. Há paginação de 50 registros, mas sem pesquisa ou filtros.</p>
+    <h2>5.3 Adição/utilização de honras</h2>
+    <ol><li>O operador abre o formulário para um `id`.</li><li>Envia quantidade e motivo.</li><li>O controller soma/subtrai `users.points` e salva.</li><li>Depois cria um registro positivo/negativo em `points`.</li></ol>
+    <div class="callout danger"><strong>Janela de inconsistência:</strong> saldo e histórico são duas gravações sem transação. Falha no segundo passo, clique repetido ou concorrência pode produzir divergência. Não se registra quem executou a operação.</div>
+    <h3>Regra-alvo</h3><p>Validar quantidade e motivo, autorizar o papel, abrir transação, bloquear a conta do aluno, conferir saldo mínimo quando aplicável, inserir lançamento imutável com operador/idempotência e atualizar saldo de forma atômica.</p>
+  </section>
+
+  <section id="telas" class="page">
+    <div class="kicker">Interface atual</div><h2>6. Telas</h2>
+    <p class="screen-note">Capturas reconstruídas fielmente a partir dos templates Blade e CSS atuais. Os dados são fictícios e o reCAPTCHA é representado sem chamada externa.</p>
+    <div class="shots">
+      <figure><img src="assets/screenshots/login.png" alt="Login atual"><figcaption>Tela de login.</figcaption></figure>
+      <figure><img src="assets/screenshots/cadastro.png" alt="Cadastro atual"><figcaption>Cadastro de aluno, com WhatsApp, nascimento e reCAPTCHA.</figcaption></figure>
+      <figure><img src="assets/screenshots/saldo-aluno.png" alt="Saldo do aluno"><figcaption>Home do aluno: saldo e data/hora crua.</figcaption></figure>
+      <figure><img src="assets/screenshots/participantes.png" alt="Participantes"><figcaption>Lista administrativa de participantes.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>6.1 Gestão de alunos e honras</h2>
+    <figure class="fullbleed"><img src="assets/screenshots/lista-alunos.png" alt="Lista de alunos"><figcaption>Lista de alunos com ordenação por links e ações textuais de adição/utilização.</figcaption></figure>
+    <figure class="fullbleed"><img src="assets/screenshots/adicionar-honras.png" alt="Adicionar honras"><figcaption>Formulário de lançamento. O aviso azul foi incluído apenas na captura documental para indicar as recomendações de segurança.</figcaption></figure>
+    <h3>Problemas de experiência</h3>
+    <div class="grid"><div class="card"><ul><li>Interface pouco responsiva para tabelas.</li><li>Sem pesquisa, filtros ou feedback de carregamento.</li><li>Ações `+/-` ambíguas e distantes do contexto.</li><li>Data/hora sem localização.</li></ul></div><div class="card"><ul><li>Sem histórico ou comprovante.</li><li>Sem confirmação de operação sensível.</li><li>Caminho do ícone de senha aponta fora do webroot.</li><li>JS relativo pode quebrar em rotas aninhadas.</li></ul></div></div>
+  </section>
+
+  <section id="dados" class="page">
+    <div class="kicker">Persistência</div><h2>7. Modelagem de dados</h2>
+    <figure class="diagram"><img src="assets/diagrams/modelo-dados.svg" alt="Modelo de dados"><figcaption>Figura 3 — Modelo reconstruído do dump; a linha 1:N é conceitual, pois falta FK física.</figcaption></figure>
+    <div class="grid3"><div class="card metric"><strong>47</strong>alunos</div><div class="card metric orange"><strong>204</strong>créditos</div><div class="card metric red"><strong>121</strong>débitos</div></div>
+    <p class="small">Métricas agregadas: 53 usuários (47 aluno, 2 admin, 4 cancelou), 325 lançamentos, nenhum órfão no snapshot, 4 usuários sem histórico e 1 saldo diferente da soma dos lançamentos. A divergência pode refletir saldo inicial ou alteração manual e precisa de conciliação.</p>
+    <h3>Incompatibilidade migrations × banco</h3>
+    <p>A migration de `users` cria nome, tipo, e-mail, senha e pontos; não cria matrícula, WhatsApp ou nascimento. Não existe migration de `points`. Portanto, `php artisan migrate` não produz um banco compatível com o código.</p>
+  </section>
+
+  <section class="page">
+    <h2>7.1 Modelo-alvo recomendado</h2>
+    <table><thead><tr><th>Entidade</th><th>Responsabilidade</th><th>Decisão-chave</th></tr></thead><tbody>
+      <tr><td>`users`</td><td>identidade, e-mail, senha e estado</td><td>não armazenar regra de saldo</td></tr><tr><td>`roles` / permissões</td><td>student, volunteer, admin</td><td>papel separado de status</td></tr><tr><td>`student_profiles`</td><td>matrícula, telefone, nascimento</td><td>dados pessoais isolados</td></tr><tr><td>`point_accounts`</td><td>conta e saldo projetado</td><td>uma conta por aluno</td></tr><tr><td>`point_transactions`</td><td>razão imutável</td><td>valor, tipo, motivo, operador, idempotência, saldo após</td></tr><tr><td>`rewards`</td><td>catálogo e estoque</td><td>estado/publicação/preço</td></tr><tr><td>`redemptions`</td><td>resgates e estornos</td><td>processo auditável</td></tr><tr><td>`audit_logs`</td><td>ações administrativas</td><td>ator, alvo, antes/depois, IP</td></tr>
+    </tbody></table>
+    <div class="callout good"><strong>Princípio contábil:</strong> lançamento é imutável; correção gera estorno. O razão é a fonte de verdade. Se houver saldo materializado, ele é uma projeção atualizada na mesma transação e reconciliada automaticamente.</div>
+    <h3>Privacidade e LGPD</h3><p>WhatsApp e nascimento são dados pessoais. Definir finalidade, base legal, minimização, acesso por função, retenção, exportação/retificação e anonimização. Ambientes de desenvolvimento devem usar seed fictício; nunca cópia integral da produção.</p>
+  </section>
+
+  <section id="instalacao" class="page">
+    <div class="kicker">Operação</div><h2>8. Instalação e ambiente</h2>
+    <h3>Recuperação do legado</h3>
+    <p>Para máxima compatibilidade histórica, PHP 8.1 reproduz a matriz do Laravel 8, mas já está fora de suporte e serve somente para ambiente isolado. O snapshot inicializou Artisan com PHP 8.3.6, porém essa combinação requer testes e não deve ser tratada como suporte oficial.</p>
+    <p>Pré-requisitos: Composer 2, MySQL 8, extensões PHP Ctype/cURL/DOM/Fileinfo/Mbstring/OpenSSL/PDO Session/Tokenizer/XML e servidor com raiz em `public/`.</p>
+    <pre>git clone &lt;repositorio&gt; laravel-loja
+cd laravel-loja
+cp .env.example .env
+composer install
+php artisan key:generate
+# criar migrations completas antes do próximo passo
+php artisan migrate --seed
+php artisan route:list
+php artisan serve</pre>
+    <h3>Configuração mínima</h3>
+    <pre>APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=meta
+DB_USERNAME=meta_app
+DB_PASSWORD=&lt;segredo&gt;
+GOOGLE_CAPTCHA_SECRET=&lt;segredo&gt;</pre>
+    <div class="callout danger"><strong>Bloqueio atual:</strong> migrations não bastam. Importar o dump bruto só é aceitável em recuperação autorizada, banco privado e com controles de dados. Para desenvolvimento, crie migrations e seeders fictícios.</div>
+  </section>
+
+  <section class="page">
+    <h2>8.1 Produção modernizada</h2>
+    <ul><li>Laravel 13 e PHP 8.5 atualizado (ou versões suportadas na data do deploy);</li><li>Nginx/Apache/FrankenPHP apontando para `public/`, HTTPS e `APP_DEBUG=false`;</li><li>MySQL 8 com usuário de privilégio mínimo;</li><li>segredos em cofre/variáveis, backup criptografado e restauração testada;</li><li>configuração/rotas/views em cache no deploy;</li><li>logs centralizados, monitoramento de erros, health check e alertas;</li><li>pipeline com testes, análise estática, auditoria de dependências e rollback.</li></ul>
+    <h3>Importação segura</h3>
+    <ol><li>Inventariar e classificar dados.</li><li>Trabalhar sobre cópia criptografada.</li><li>Normalizar perfis/status e telefones.</li><li>Conciliar saldo × razão; documentar saldo inicial.</li><li>Importar em staging anonimizado.</li><li>Testar volume, autorização e reconciliação.</li><li>Backup, corte, validação e rollback.</li><li>Invalidar sessões e forçar redefinição de senhas.</li></ol>
+    <h3>Front-end</h3><p>Hoje os assets ativos já estão compilados. `npm install` não resolve o projeto como está: todas as dependências estão ausentes, Vite plugin não está declarado, `resources/js/bootstrap.js` não existe e não há scripts. A migração deve escolher uma única cadeia (Vite + Tailwind/Bootstrap atual) e remover Gulp/Elixir.</p>
+  </section>
+
+  <section id="auditoria" class="page">
+    <div class="kicker">Qualidade e segurança</div><h2>9. Auditoria: riscos e correções</h2>
+    <table><thead><tr><th>Prio.</th><th>Constatação</th><th>Impacto</th><th>Correção</th></tr></thead><tbody>
+      <tr><td class="priority p0">P0</td><td>Rotas administrativas usam só `auth`</td><td>aluno pode gerir dados/saldos</td><td>policies/gates + testes negativos</td></tr>
+      <tr><td class="priority p0">P0</td><td>`/clear-cache` pública</td><td>abuso operacional/DoS</td><td>remover; usar CLI de deploy</td></tr>
+      <tr><td class="priority p0">P0</td><td>`APP_KEY` padrão no código</td><td>compromete criptografia se env falhar</td><td>sem fallback; revogar/rotacionar</td></tr>
+      <tr><td class="priority p0">P0</td><td>dump com PII/hashes fora do ignore</td><td>vazamento e não conformidade</td><td>retirar, criptografar, retenção</td></tr>
+      <tr><td class="priority p0">P0</td><td>saldo + histórico sem transação</td><td>divergência/perda concorrente</td><td>transação, lock/atomicidade, idempotência</td></tr>
+      <tr><td class="priority p0">P0</td><td>Laravel 8 sem suporte</td><td>falhas sem correção</td><td>migrar para versão suportada</td></tr>
+      <tr><td class="priority p1">P1</td><td>migrations incompletas</td><td>deploy não reproduzível</td><td>schema completo + seeds</td></tr>
+      <tr><td class="priority p1">P1</td><td>entradas sem validação server-side</td><td>erro/abuso de saldo</td><td>Form Requests e regras de domínio</td></tr>
+      <tr><td class="priority p1">P1</td><td>`order` livre</td><td>erros e superfície SQL</td><td>allow-list de colunas</td></tr>
+      <tr><td class="priority p1">P1</td><td>reCAPTCHA via `file_get_contents` GET</td><td>segredo em logs/indisponibilidade</td><td>HTTP client POST, timeout e tratamento</td></tr>
+      <tr><td class="priority p1">P1</td><td>logout GET</td><td>ação acionável por terceiros</td><td>POST + CSRF</td></tr>
+      <tr><td class="priority p1">P1</td><td>testes incompatíveis</td><td>regressão invisível</td><td>baseline novo de testes</td></tr>
+      <tr><td class="priority p2">P2</td><td>assets e telas duplicados</td><td>custo de manutenção</td><td>uma stack e remoção do morto</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="page">
+    <h2>9.1 Erros concretamente reproduzidos</h2>
+    <table><thead><tr><th>Comando</th><th>Resultado</th><th>Leitura</th></tr></thead><tbody>
+      <tr><td><code>php artisan --version</code></td><td class="check">Laravel 8.83.27</td><td>framework inicializa com vendor atual.</td></tr><tr><td><code>php artisan route:list</code></td><td class="check">13 rotas</td><td>confirma `app/Http/routes.php`.</td></tr><tr><td><code>composer validate</code></td><td class="check">válido</td><td>sintaxe do manifesto está correta.</td></tr><tr><td><code>./vendor/bin/phpunit</code></td><td class="fail">fatal</td><td>`Tests\TestCase` não encontrado; testes misturados.</td></tr><tr><td><code>npm ls --depth=0</code></td><td class="fail">ELSPROBLEMS</td><td>todas as dependências declaradas ausentes.</td></tr><tr><td><code>php artisan migrate:status</code></td><td class="fail">conexão indisponível</td><td>o ambiente aponta para banco externo; não foi acessado.</td></tr>
+    </tbody></table>
+    <h3>Correções adicionais</h3>
+    <ul><li>`points` aceita motivo nulo no banco, mas formulário exige; alinhar contrato.</li><li>`users.points` é unsigned; débito maior que saldo pode falhar ou depender do modo SQL.</li><li>não existe FK `points.user_id`; adicionar depois de validar órfãos.</li><li>o usuário recém-cadastrado depende de defaults implícitos para `points`/matrícula.</li><li>timezone está em UTC e `APP_URL` ignora o `.env`.</li><li>relação `historyPoints` existe, mas não há extrato na interface.</li></ul>
+  </section>
+
+  <section id="melhorias" class="page">
+    <div class="kicker">Produto</div><h2>10. Melhorias funcionais e de telas</h2>
+    <div class="grid"><div class="card"><h3>Aluno</h3><ul><li>saldo destacado e extrato filtrável</li><li>explicação de cada lançamento</li><li>catálogo e resgate de recompensas</li><li>comprovantes e notificações</li></ul></div><div class="card"><h3>Equipe</h3><ul><li>busca/filtros/exportação</li><li>lançamento com confirmação</li><li>lote de créditos com prévia</li><li>relatórios e conciliação</li></ul></div><div class="card"><h3>Administração</h3><ul><li>RBAC e estados de conta</li><li>auditoria antes/depois</li><li>aprovação de ajustes</li><li>estoque/recompensas</li></ul></div><div class="card"><h3>Qualidade UX</h3><ul><li>responsividade real</li><li>WCAG/teclado/contraste</li><li>feedback e estados vazios</li><li>formatação pt-BR</li></ul></div></div>
+    <h3>Princípios de tela</h3><p>Usar ações nomeadas (“Adicionar honras”, “Registrar utilização”), mostrar aluno/saldo/efeito antes de confirmar, não depender de cor para estado, impedir envio duplicado e devolver identificador auditável. Tabelas devem virar cartões no mobile ou permitir rolagem controlada.</p>
+  </section>
+
+  <section class="page">
+    <h2>10.1 Conceito de interface modernizada</h2>
+    <figure class="fullbleed"><img src="assets/mockups/dashboard-modernizado-conceito.png" alt="Mockup conceitual de dashboard"><figcaption>Mockup conceitual gerado para a documentação. Não representa funcionalidade implementada. Dados e nomes são fictícios.</figcaption></figure>
+    <div class="grid"><div class="card"><h3>Elementos aproveitáveis</h3><ul><li>navegação por módulos</li><li>indicadores de saldo/alunos/movimentações</li><li>ações rápidas contextualizadas</li><li>tabela de transações recentes</li></ul></div><div class="card"><h3>Ajustes antes de implementar</h3><ul><li>validar identidade visual oficial</li><li>reduzir densidade por perfil</li><li>testar acessibilidade e mobile</li><li>não expor rankings sem regra/consentimento</li></ul></div></div>
+  </section>
+
+  <section id="migracao" class="page">
+    <div class="kicker">Tecnologia</div><h2>11. Opções de migração</h2>
+    <table><thead><tr><th>Opção</th><th>Adequação</th><th>Vantagens</th><th>Riscos</th></tr></thead><tbody>
+      <tr><td>Upgrade 8→13 incremental</td><td>Preservar base e reduzir reescrita</td><td>mudanças menores por etapa</td><td>dívida convive por mais tempo; saltos sucessivos</td></tr>
+      <tr><td><b>Novo Laravel 13 + Blade/Livewire</b></td><td><b>Recomendado</b> para escopo atual</td><td>base limpa, operação simples, entrega rápida</td><td>exige importador e paridade testada</td></tr>
+      <tr><td>Laravel API + Vue/React</td><td>SPA, mobile e alta interação</td><td>API reutilizável e UX rica</td><td>mais complexidade e custo</td></tr>
+      <tr><td>Django/NestJS/.NET</td><td>Padrão estratégico da equipe</td><td>alinhamento ao ecossistema interno</td><td>reescrita integral e maior regressão</td></tr>
+    </tbody></table>
+    <div class="callout good"><strong>Decisão sugerida:</strong> novo monólito modular Laravel 13. O domínio e o volume de telas não justificam microserviços. Use Blade/Livewire para produtividade; Inertia/Vue somente se as interações futuras exigirem.</div>
+    <h3>Alvo técnico</h3><ul><li>PHP 8.5 com patch corrente; Laravel 13;</li><li>Vite e uma única biblioteca visual;</li><li>Form Requests, Services/Actions e Policies;</li><li>MySQL 8 com migrations completas;</li><li>Pest ou PHPUnit moderno;</li><li>CI, análise estática, formatter e auditoria de dependências;</li><li>observabilidade e backups testados.</li></ul>
+    <p class="small">Em 21/10/2026, a documentação oficial informa PHP ≥8.3 para Laravel 13. A versão PHP deve ser escolhida pela janela de suporte e atualizada para o patch de segurança corrente.</p>
+  </section>
+
+  <section id="roadmap" class="page">
+    <div class="kicker">Execução</div><h2>12. Roadmap recomendado</h2>
+    <div class="roadmap"><div class="phase"><b>Fase 0 · 1–3 dias</b>Autorização, rota pública, segredos, dump, validação e transação.</div><div class="phase"><b>Fase 1 · 3–5 dias</b>Migrations, seed fictício, testes críticos e conciliação.</div><div class="phase"><b>Fase 2 · 1–2 semanas</b>Nova base, RBAC, alunos, razão, layout e importador.</div><div class="phase"><b>Fase 3 · 3–5 dias</b>Staging, aceitação, backup, corte e rollback.</div></div>
+    <h3>Critérios de aceite mínimos</h3>
+    <ul><li>aluno recebe 403 ao tentar qualquer função de gestão;</li><li>cada lançamento tem operador, motivo, valor e idempotência;</li><li>saldo e razão permanecem consistentes sob concorrência;</li><li>instalação nasce de migrations e seed sem dump;</li><li>testes de autenticação, autorização e saldo passam no CI;</li><li>nenhum segredo ou dado real aparece no repositório/log;</li><li>backup é restaurado com sucesso em ensaio;</li><li>telas funcionam por teclado e em viewport móvel.</li></ul>
+    <h3>Estratégia de corte</h3><p>Congelar gravações no legado, executar backup, importar usuários e razão, gerar relatório de divergências, validar amostra com responsáveis, apontar tráfego ao novo sistema e manter janela curta de rollback. Evitar escrita dupla sem desenho explícito de reconciliação.</p>
+    <div class="callout info">Estimativas assumem equipe pequena e regras próximas ao código atual. Catálogo, estoque, integrações e aprovações podem ampliar o prazo.</div>
+  </section>
+
+  <section id="validacao" class="page">
+    <div class="kicker">Confiabilidade</div><h2>13. Validações e limitações</h2>
+    <h3>O que foi validado</h3><ul><li>estrutura e fluxo de carregamento;</li><li>rotas registradas pelo framework;</li><li>versões diretas instaladas via Composer;</li><li>controllers, models, Blade, migrations e configurações;</li><li>schema e métricas agregadas do dump;</li><li>execução de Composer, Artisan, PHPUnit e npm;</li><li>capturas comparadas aos templates atuais.</li></ul>
+    <h3>Limitações</h3><ul><li>não houve acesso ao banco remoto nem à aplicação publicada;</li><li>o ambiente local não possuía um banco configurado acessível;</li><li>as telas autenticadas foram reconstruídas dos templates, não capturadas com dados reais;</li><li>não foi feito teste de carga, pentest ou auditoria externa de dependências;</li><li>regras organizacionais e LGPD precisam ser confirmadas com responsáveis.</li></ul>
+    <h3>Arquivos complementares</h3><p>A pasta contém guias em Markdown de instalação, dados, fluxos, inventário e modernização, além de SVGs e PNGs reutilizáveis.</p>
+  </section>
+
+  <section id="referencias" class="page">
+    <div class="kicker">Fontes</div><h2>14. Referências e rastreabilidade</h2>
+    <h3>Fontes internas</h3><ul class="source-list"><li>`app/Providers/RouteServiceProvider.php` e `app/Http/routes.php` — rotas reais.</li><li>`app/Http/Controllers/HomeController.php` — listagens e lançamentos.</li><li>`app/Http/Controllers/Auth/AuthController.php` — login, cadastro e reCAPTCHA.</li><li>`app/User.php`, `app/Points.php` e migrations — modelos e schema versionado.</li><li>`dump/Meta20241130.sql` — schema observado e agregados.</li><li>`resources/views/app.blade.php`, `auth/*`, `admin/users/*` — telas.</li><li>`composer.lock`, `package.json`, `phpunit.xml` e `tests/*` — dependências e qualidade.</li></ul>
+    <h3>Fontes oficiais externas</h3><ul class="source-list"><li>Laravel 8 release/support policy: <a href="https://laravel.com/docs/8.x/releases">https://laravel.com/docs/8.x/releases</a> — segurança encerrada em 24/01/2023.</li><li>Laravel 13 release notes: <a href="https://laravel.com/docs/releases">https://laravel.com/docs/releases</a> — PHP mínimo 8.3.</li><li>Laravel 13 deployment: <a href="https://laravel.com/docs/deployment">https://laravel.com/docs/deployment</a>.</li><li>PHP supported versions: <a href="https://www.php.net/supported-versions.php">https://www.php.net/supported-versions.php</a>.</li></ul>
+    <div class="callout"><strong>Nota temporal:</strong> versões e suporte mudam. Revalidar as páginas oficiais imediatamente antes do início da migração e de cada deploy.</div>
+    <div class="footer-note">Documento gerado em 21 de outubro de 2026 · Projeto META · análise do repositório local</div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Telas atuais — META</title>
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:"Helvetica Neue",Arial,sans-serif;color:#333;background:#fff}
+    body{padding-top:70px}.screen{display:none;min-height:830px}.screen.active{display:block}
+    .navbar{position:fixed;z-index:10;top:0;left:0;right:0;height:51px;background:#222;border-color:#080808;color:#9d9d9d}
+    .nav-inner{width:1170px;margin:auto;display:flex;height:51px;align-items:center}.brand{font-size:18px;color:#9d9d9d;padding:15px;text-decoration:none}.nav{display:flex;list-style:none;margin:0;padding:0}.nav a{display:block;color:#9d9d9d;text-decoration:none;padding:15px}.nav a:hover{color:#fff}.nav-right{margin-left:auto}
+    .container{width:1170px;margin:auto}.container-fluid{width:100%;padding:0 15px}.row{display:flex;flex-wrap:wrap;margin:0 -15px}.col10{width:83.333%;padding:0 15px}.offset1{margin-left:8.333%}.col8{width:66.666%;padding:0 15px}.offset2{margin-left:16.666%}.col12{width:100%;padding:0 15px}
+    .panel{border:1px solid #ddd;border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,.05);margin-bottom:20px}.panel-heading{background:#f5f5f5;border-bottom:1px solid #ddd;padding:10px 15px;border-radius:3px 3px 0 0}.panel-body{padding:28px 15px}.form-row{display:flex;margin-bottom:15px}.label{width:33.333%;padding:7px 15px 0;text-align:right;font-weight:700}.field{width:50%;padding:0 15px;position:relative}.input{width:100%;height:34px;padding:6px 12px;border:1px solid #ccc;border-radius:4px;box-shadow:inset 0 1px 1px rgba(0,0,0,.075);font-size:14px}.actions{margin-left:33.333%;padding:0 15px}
+    .btn{display:inline-block;padding:7px 13px;border:1px solid transparent;border-radius:4px;background:#337ab7;border-color:#2e6da4;color:white;text-decoration:none;font-size:14px}.link{color:#337ab7;text-decoration:none;margin-left:10px}.eye{position:absolute;right:24px;top:3px;width:28px;height:28px;border-radius:50%;background:#f0f0f0;display:grid;place-items:center;color:#555;font-size:15px}
+    h1{font-size:36px;font-weight:500;margin:20px 0 10px;padding-bottom:9px;border-bottom:1px solid #eee}h1 small{font-size:65%;color:#777;font-weight:400}h3{font-size:24px;font-weight:500;margin:20px 0 10px}
+    table{width:100%;border-collapse:collapse;margin-bottom:20px}th,td{padding:10px 8px;text-align:left;border-top:1px solid #ddd;vertical-align:top}th{border-top:0}th a,td a{color:#337ab7;text-decoration:none}.pager{display:flex;list-style:none;padding:0}.pager li{border:1px solid #ddd;padding:8px 12px;color:#337ab7}.pager li.active{background:#337ab7;color:#fff}
+    .footer{width:1170px;margin:45px auto 0;border-top:1px solid #eee;padding:25px 0;color:#444}.hint{font-size:12px;color:#777}.captcha{width:304px;height:78px;border:1px solid #d5d5d5;background:#fafafa;display:flex;align-items:center;gap:15px;padding:12px}.check{width:28px;height:28px;border:2px solid #777;background:white}.captcha-logo{margin-left:auto;text-align:center;font-size:10px;color:#777}.form-narrow .field{width:66.666%}.form-narrow .label{width:16.666%}.form-narrow .actions{margin-left:16.666%}.secondary{background:#fff;color:#333;border-color:#ccc;margin-left:12px}.notice{background:#eef7ff;border-left:4px solid #337ab7;padding:10px 14px;margin:0 0 20px}.badge{display:inline-block;background:#f5f5f5;border:1px solid #ddd;border-radius:3px;padding:2px 6px;color:#777}
+  </style>
+</head>
+<body>
+  <header class="navbar"><div class="nav-inner"><a class="brand">META</a><ul class="nav"><li><a>Home</a></li><li class="admin-only"><a>Participantes</a></li><li class="staff-only"><a>Alunos</a></li></ul><ul class="nav nav-right"><li class="guest-only"><a>Login</a></li><li class="guest-only"><a>Register</a></li><li class="user-only"><a id="userName">Usuário ▾</a></li></ul></div></header>
+
+  <main id="login" class="screen guest">
+    <div class="container-fluid"><div class="row"><div class="col8 offset2"><div class="panel"><div class="panel-heading">Login</div><div class="panel-body">
+      <div class="form-row"><div class="label">Email</div><div class="field"><input class="input" type="email"></div></div>
+      <div class="form-row"><div class="label">Senha</div><div class="field"><span class="eye">◉</span><input class="input" type="password"></div></div>
+      <div class="form-row"><div class="actions"><a class="btn">Login</a><a class="link">Para registrar clique aqui...</a></div></div>
+    </div></div></div></div></div><div class="footer">Copyright © Projeto Meta 2023</div>
+  </main>
+
+  <main id="register" class="screen guest">
+    <div class="container-fluid"><div class="row"><div class="col8 offset2"><div class="panel"><div class="panel-heading">Registrar</div><div class="panel-body">
+      <div class="form-row"><div class="label">Nome</div><div class="field"><input class="input"></div></div>
+      <div class="form-row"><div class="label">Email</div><div class="field"><input class="input" type="email"></div></div>
+      <div class="form-row"><div class="label">Whatsapp/Celular</div><div class="field"><input class="input"></div></div>
+      <div class="form-row"><div class="label">Data Nascimento</div><div class="field"><input class="input" type="date"></div></div>
+      <div class="form-row"><div class="label">Senha</div><div class="field"><span class="eye">◉</span><input class="input" type="password"></div></div>
+      <div class="form-row"><div class="label">Confirmar Senha</div><div class="field"><span class="eye">◉</span><input class="input" type="password"></div></div>
+      <div class="form-row"><div class="label"></div><div class="field"><div class="captcha"><div class="check"></div><div>Não sou um robô</div><div class="captcha-logo">reCAPTCHA<br>Privacidade - Termos</div></div></div></div>
+      <div class="form-row"><div class="actions"><a class="btn">Registrar</a></div></div>
+    </div></div></div></div></div><div class="footer">Copyright © Projeto Meta 2023</div>
+  </main>
+
+  <main id="home" class="screen user">
+    <div class="container"><div class="row"><div class="col10 offset1"><div class="panel"><div class="panel-heading">Bem vindo!</div><div class="panel-body"><h3>Seu saldo em moedas é: 430</h3><p>2026-10-21 18:30:00</p></div></div></div></div></div><div class="footer">Copyright © Projeto Meta 2023</div>
+  </main>
+
+  <main id="students" class="screen staff">
+    <div class="container"><div class="row"><div class="col12"><h1>Alunos <small>Listagem de Alunos</small></h1></div></div>
+      <table><thead><tr><th><a>Matrícula</a></th><th><a>Nome</a></th><th><a>Email</a></th><th><a>Whatsapp</a></th><th><a>Nascimento</a></th><th><a>Moedas</a></th><th>Ações</th></tr></thead><tbody>
+        <tr><td>A-1001</td><td>Ana Souza</td><td>ana@meta.local</td><td>(11) 99999-1001</td><td>2008-03-21</td><td>430</td><td><a>+ Honras</a><br><a>- Honras</a></td></tr>
+        <tr><td>A-1002</td><td>Bruno Lima</td><td>bruno@meta.local</td><td>(11) 99999-1002</td><td>2009-07-02</td><td>275</td><td><a>+ Honras</a><br><a>- Honras</a></td></tr>
+        <tr><td>A-1003</td><td>Camila Rocha</td><td>camila@meta.local</td><td>(11) 99999-1003</td><td>2007-11-30</td><td>510</td><td><a>+ Honras</a><br><a>- Honras</a></td></tr>
+      </tbody></table><ul class="pager"><li>«</li><li class="active">1</li><li>2</li><li>»</li></ul>
+    </div><div class="footer">Copyright © Projeto Meta 2023</div>
+  </main>
+
+  <main id="participants" class="screen admin">
+    <div class="container"><div class="row"><div class="col12"><h1>Participantes <small>Listagem de Participantes</small></h1></div></div>
+      <table><thead><tr><th>Tipo</th><th>Matrícula</th><th>Nome</th><th>Email</th><th>Whatsapp</th><th>Nascimento</th><th>Moedas</th></tr></thead><tbody>
+        <tr><td><span class="badge">admin</span></td><td>—</td><td>Administração META</td><td>admin@meta.local</td><td>—</td><td>—</td><td>0</td></tr>
+        <tr><td><span class="badge">voluntario</span></td><td>—</td><td>Marina Costa</td><td>voluntario@meta.local</td><td>(11) 99999-1000</td><td>1991-05-14</td><td>120</td></tr>
+      </tbody></table>
+    </div><div class="footer">Copyright © Projeto Meta 2023</div>
+  </main>
+
+  <main id="points" class="screen staff">
+    <div class="container"><div class="row"><div class="col12"><h1>Adicionar Honra <small>A-1001 - Ana Souza (Saldo: 430)</small></h1></div></div>
+      <div class="notice">A tela atual recebe a quantidade e o motivo; a documentação recomenda validação, transação e autorização por papel.</div>
+      <div class="form-narrow"><div class="form-row"><div class="label">Pontos(+)</div><div class="field"><input class="input" type="number" value="50"></div></div><div class="form-row"><div class="label">Motivo</div><div class="field"><input class="input" value="Participação em atividade"></div></div><div class="form-row"><div class="actions"><a class="btn">Adicionar</a><a class="btn secondary">voltar</a></div></div></div>
+    </div><div class="footer">Copyright © Projeto Meta 2023</div>
+  </main>
+
+  <script>
+    const key=new URLSearchParams(location.search).get('screen')||'login';
+    const page=document.getElementById(key)||document.getElementById('login');page.classList.add('active');
+    const guest=page.classList.contains('guest');const admin=page.classList.contains('admin');const staff=page.classList.contains('staff')||admin;
+    document.querySelectorAll('.guest-only').forEach(x=>x.style.display=guest?'block':'none');document.querySelectorAll('.user-only').forEach(x=>x.style.display=guest?'none':'block');document.querySelectorAll('.admin-only').forEach(x=>x.style.display=admin?'block':'none');document.querySelectorAll('.staff-only').forEach(x=>x.style.display=staff?'block':'none');
+    document.getElementById('userName').textContent=admin?'Administração META ▾':(staff?'Marina Costa ▾':'Ana Souza ▾');
+  </script>
+</body>
+</html>

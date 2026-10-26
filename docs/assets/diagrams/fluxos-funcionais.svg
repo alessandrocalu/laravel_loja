@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs><style>.t{font-family:Arial,sans-serif;fill:#13213c}.h{font-size:34px;font-weight:700}.s{font-size:21px}.sm{font-size:18px}.box{rx:18;stroke-width:3}.arrow{stroke:#637189;stroke-width:4;fill:none;marker-end:url(#a)}</style><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12z" fill="#637189"/></marker></defs>
+  <rect width="1600" height="1000" fill="#f7f8fb"/><text x="70" y="70" class="t h">Fluxos funcionais atuais</text>
+  <rect x="70" y="125" width="280" height="90" class="box" fill="#e8f0ff" stroke="#376cc3"/><text x="210" y="180" text-anchor="middle" class="t s" font-weight="700">Visitante</text>
+  <rect x="480" y="125" width="280" height="90" class="box" fill="#fff1df" stroke="#e17a22"/><text x="620" y="180" text-anchor="middle" class="t s">Login / Registro</text>
+  <rect x="890" y="125" width="280" height="90" class="box" fill="#e8f8f1" stroke="#269a74"/><text x="1030" y="180" text-anchor="middle" class="t s">Sessão autenticada</text>
+  <path d="M350 170H480" class="arrow"/><path d="M760 170H890" class="arrow"/>
+  <rect x="70" y="320" width="300" height="115" class="box" fill="#eef4ff" stroke="#376cc3"/><text x="220" y="368" text-anchor="middle" class="t s" font-weight="700">Aluno</text><text x="220" y="402" text-anchor="middle" class="t sm">consulta saldo</text>
+  <rect x="500" y="320" width="300" height="115" class="box" fill="#eefaf5" stroke="#269a74"/><text x="650" y="368" text-anchor="middle" class="t s" font-weight="700">Voluntário</text><text x="650" y="402" text-anchor="middle" class="t sm">lista e movimenta alunos</text>
+  <rect x="930" y="320" width="300" height="115" class="box" fill="#fff5e8" stroke="#d17a24"/><text x="1080" y="368" text-anchor="middle" class="t s" font-weight="700">Administrador</text><text x="1080" y="402" text-anchor="middle" class="t sm">participantes + alunos</text>
+  <path d="M1030 215C1030 270 220 260 220 320" class="arrow"/><path d="M1030 215C1030 270 650 260 650 320" class="arrow"/><path d="M1030 215V320" class="arrow"/>
+  <rect x="355" y="545" width="360" height="105" class="box" fill="#f1ecff" stroke="#7652b7"/><text x="535" y="590" text-anchor="middle" class="t s">GET /points/plus/{id}</text><text x="535" y="622" text-anchor="middle" class="t sm">formulário de adição</text>
+  <rect x="885" y="545" width="360" height="105" class="box" fill="#f1ecff" stroke="#7652b7"/><text x="1065" y="590" text-anchor="middle" class="t s">GET /points/minus/{id}</text><text x="1065" y="622" text-anchor="middle" class="t sm">formulário de utilização</text>
+  <rect x="620" y="755" width="360" height="110" class="box" fill="#eaf8f3" stroke="#269a74"/><text x="800" y="800" text-anchor="middle" class="t s" font-weight="700">POST + atualização</text><text x="800" y="833" text-anchor="middle" class="t sm">users.points e novo registro em points</text>
+  <path d="M650 435C650 490 535 490 535 545" class="arrow"/><path d="M1080 435C1080 490 1065 490 1065 545" class="arrow"/><path d="M535 650C535 710 700 700 735 755" class="arrow"/><path d="M1065 650C1065 710 900 700 865 755" class="arrow"/>
+  <rect x="70" y="760" width="390" height="150" class="box" fill="#ffeded" stroke="#c94a4a"/><text x="265" y="805" text-anchor="middle" class="t s" font-weight="700">Falha crítica atual</text><text x="265" y="842" text-anchor="middle" class="t sm">As rotas usam somente auth.</text><text x="265" y="875" text-anchor="middle" class="t sm">Aluno pode acessar URLs de gestão.</text>
+  <text x="70" y="965" class="t sm">O menu esconde opções por papel, mas visibilidade de interface não substitui autorização no servidor.</text>
+</svg>
